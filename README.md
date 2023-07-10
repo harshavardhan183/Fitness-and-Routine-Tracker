@@ -1,5 +1,5 @@
-# QuantifiedSelf
-Quantified-Self is a self-tracking application used to track habits, activities and other life parameters like weight, temperature, mood etc.
+# Fitness and Routine Tracker
+Fitness and Routine Tracker is a self-tracking application used to track habits, activities and other life parameters like weight, temperature, mood etc.
 
 **Technologies used**
 
