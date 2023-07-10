@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>logpage </title>
+    <style>body{background-color:black}</style>
+{% endblock head %}
+
+{% block body %}
+
+<form action='/add_log_page'method="post" style="color:aliceblue">
+    <h3 align="center"></h3>
+    <div class="form-group">
+
+        <h2 style="padding-left: 568px">Enter Log</h2>
+
+        <div align="center">
+
+            <br>
+
+             <label for="date">Date & Time </label>
+        
+        <input type="datetime-local" class="form-control" id="date" name="date" style="width: 350px; border-radius: 15px; text-align: center" value="2022-03-22 08:47:39.885773" required="">
+        <label for="value">Value: </label>
+
+                        <select style="width: 350px;text-align: center;border-radius: 15px;" id="value" class="form-control" name="value" required="">
+                            <option value="Happy">Happy</option>
+                            <option value="Sad">Sad</option>
+                            <option value="Angry">Angry</option>
+                            <option value="Depressed">Romantic</option>
+                            <option value="Anxious">Cheerful</option>
+                            <option value="Humorous">Humorous</option>
+                            </select>
+
+            <label for="value">Value: </label>
+
+
+            <input type="number" class="form-control" id="value" name="value" placeholder="Enter Number" maxlength="30" style="width: 300px; border-radius: 15px; text-align: center" required="">
+
+            <label for="desc">Description: </label>
+        <textarea class="form-control" id="desc" name="desc" placeholder="Enter log description" maxlength="250" style="width: 350px; border-radius: 15px; text-align: center" required=""></textarea>
+
+
+            <br>
+            <button type="submit" class="btn" style="border-radius: 12px;background: -webkit-linear-gradient(top, rgb(58, 56, 56), white);"><b>Add Log</b></button>
+
+        </div>
+
+
+    </div>
+</form>
+
+<div class = "container my-3" style="color:aliceblue">
+    {% if allLogs|length == 0 %}
+    <div class="alert alert-primary" role="alert">
+        No logs yet. Add a log now..
+      </div>
+      <a href="/add_log_page" class="btn" style="border-radius: 15px;background: -webkit-linear-gradient(top, rgb(58, 56, 56), white);"><b>Add Log</b></a>
+    {% else %} 
+        <h2>All Your Logs</h2>
+        <table class="table" style="color:aliceblue">
+            <thead>
+              <tr>
+                <th scope="col">SNo</th>
+                <th scope="col">Date & time</th>
+                <th scope="col">Value</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            
+                {% for log in allLogs %}
+                <tbody>
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ log.time }}</td>
+                    <td>{{ log.value }}</td>
+                    <td>{{ log.Description }}</td>
+                    <td><a href="/Edit_log/{{ log.sno }}" type = "button" style="color:aliceblue" class ="btn  btn-outline-light btn-sm mx-1" >Edit</button></td>
+                    <td><a href="/Delete_log/{{ log.sno }}" type = "button" style="color:aliceblue" class ="btn  btn-outline-light btn-sm mx-1" >Delete</button></td> 
+                  </tr>
+                </tbody>
+                {% endfor %}
+              </table>
+              
+     {% endif %}
+     
+    </div>
+{% endblock body %}

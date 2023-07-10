@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Edit_log</title>
+{% endblock head %}
+
+{% block body %}
+<div class = "container">
+    <h2>Edit Log</h2>
+    <form action = "/Edit_log/{{log.sno}}" method = "POST">
+      <div class="mb-3">
+        {% if tracker.tracker_type == "Multiple Choice" %}
+        <label for="value">Value: </label>
+        <select style="width: 350px;text-align: center;border-radius: 15px;" id="value" value="{{ log.value }}" class="form-control" name="value" required="">
+            <option value="Happy">Happy</option>
+            <option value="Sad">Sad</option>
+            <option value="Angry">Angry</option>
+            <option value="Depressed">Romantic</option>
+            <option value="Anxious">Cheerful</option>
+            <option value="Humorous">Humorous</option>
+            </select>
+        {% endif %}
+        
+        {% if tracker.tracker_type == "Numerical" %}    
+          <label for="value">Value: </label>
+          <input type="number" class="form-control" id="value" name="value" value="{{ log.value }}" placeholder="Enter Number" maxlength="30" style="width: 300px; border-radius: 15px; text-align: center" required="">
+        {% endif %}
+
+        {% if tracker.tracker_type == "Boolean" %}
+        <label for="value">Value: </label>
+        <br>
+        <input type="radio" id="value" name="value" value="{{ log.value }}" checked="">
+         <label for="value">True</label><br>
+         <input type="radio" id="value" name="value" value="False">
+         <label for="value">False</label><br>
+
+        {% endif %}  
+      </div>
+      <div class="mb-3">
+        <label for="desc" class="form-label">Description</label>
+        <input type="text" class="form-control" name="desc" id="desc" value = "{{ log.Description }}">
+      </div>
+      <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+  </div>
+{% endblock body %}
