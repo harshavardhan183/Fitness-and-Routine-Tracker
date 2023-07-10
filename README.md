@@ -28,5 +28,3 @@ CRUD is implemented for both tracks and logs. User can create, update and delete
 account. Dashboard is created to see the list of trackers with buttons to help in CRUD
 operations. Each tracker has its own page to see the logs.
 
-**Working Video Link Of Application**:
-https://drive.google.com/file/d/17YQCnruEyMBdX0A0QJ1ioeTzWXrUETEn/view?usp=sharing
